@@ -1,5 +1,6 @@
 package mang.io.studentmanage.repository;
 
+import mang.io.studentmanage.entity.Guardian;
 import mang.io.studentmanage.entity.Student;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +23,29 @@ class StudentRepositoryTest {
                 .emailId("mangio@gmail.com")
                 .firstName("mang")
                 .lastName("Touthang")
-                .guardianName("Nikil")
-                .guardianEmail("nikhil@gmail.com")
-                .guardianMobile("888888888929228")
+//                .guardianName("Nikil")
+//                .guardianEmail("nikhil@gmail.com")
+//                .guardianMobile("888888888929228")
                 .build();
+        studentRepository.save(student);
+    }
+
+    @Test
+    public void saveStudentWithGuardian(){
+
+        Guardian guardian = Guardian.builder()
+                .name("Nikhil")
+                .email("nikhil@gmail.com")
+                .mobile("8983983857")
+                .build();
+
+        Student student = Student.builder()
+                .firstName("Mang")
+                .emailId("mangio2@gmail.com")
+                .lastName("Touthang")
+                .guardian(guardian)
+                .build();
+
         studentRepository.save(student);
     }
 
